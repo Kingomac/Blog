@@ -1,0 +1,43 @@
+---
+import { MarkdownInstance } from "astro";
+import PostCard from "../../components/PostCard.astro";
+import { PostFrontmatter } from "../posts/PostFrontmatter";
+export async function getStaticPaths() {
+  const posts = await Astro.glob("../posts/*.md");
+  const result: { params: { page: number } }[] = [];
+  const numPages = posts.length / 10;
+  for (let i = 1; i <= numPages; i++) {
+    result.push({
+      params: {
+        page: i,
+      },
+    });
+  }
+
+  return result;
+}
+
+const { page } = Astro.params;
+const posts: MarkdownInstance<PostFrontmatter>[] = await Astro.glob(
+  "../posts/*.md"
+);
+const filteredPosts = posts
+  .sort(
+    (a, b) =>
+      new Date(b.frontmatter.pubDate).getTime() -
+      new Date(a.frontmatter.pubDate).getTime()
+  )
+  .slice(0, 1);
+---
+
+<h1>{page}</h1>
+
+<ul>
+  {
+    filteredPosts.map((i) => (
+      <li>
+        <PostCard post={i} />
+      </li>
+    ))
+  }
+</ul>

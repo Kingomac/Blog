@@ -1,0 +1,19 @@
+---
+import { getTagsList } from "./tagUtil";
+
+export async function getStaticPaths() {
+  const tags = await getTagsList();
+  const result = tags.map((i) => {
+    return {
+      params: {
+        tag: i,
+      },
+    };
+  });
+  return result;
+}
+
+const { tag } = Astro.params;
+---
+
+<h1>Tag: {tag}</h1>

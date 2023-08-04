@@ -1,0 +1,63 @@
+---
+import { MarkdownInstance } from "astro";
+import { PostFrontmatter } from "../pages/posts/PostFrontmatter";
+import Tag from "./Tag.astro";
+
+interface Props {
+  post: MarkdownInstance<PostFrontmatter>;
+}
+
+const { post } = Astro.props;
+---
+
+<div>
+  <h3>{post.frontmatter.title}</h3>
+  <span>{post.frontmatter.description}</span>
+  <ul>
+    {
+      post.frontmatter.tags.map((i) => (
+        <li>
+          <Tag name={i} />
+        </li>
+      ))
+    }
+  </ul>
+  <time datetime={post.frontmatter.pubDate}
+    >{new Date(post.frontmatter.pubDate).toLocaleDateString()}</time
+  >
+</div>
+
+<style>
+  div {
+    display: grid;
+    justify-content: space-around;
+    grid-template-columns: 90%;
+    grid-template-rows: 1fr 4fr 1fr;
+    width: 262px;
+    height: 300px;
+    border: solid 1px black;
+
+    > span {
+      width: 100%;
+      text-align: start;
+    }
+
+    > h3 {
+      text-align: center;
+      font-size: larger;
+    }
+
+    > ul {
+      padding: 0;
+      text-align: center;
+      list-style-type: none;
+      > li {
+        display: inline;
+      }
+    }
+
+    > time {
+      text-align: end;
+    }
+  }
+</style>

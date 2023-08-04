@@ -1,0 +1,19 @@
+---
+const { name } = Astro.props;
+---
+
+<a href={`/tags/${name}`}>
+  {name}
+</a>
+
+<style>
+  a {
+    color: #f1f1f1;
+    background-color: #599ed6;
+    padding: 0.3vh 0.7vw 0.3vh 0.7vw;
+    margin: 0.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 10px;
+  }
+</style>

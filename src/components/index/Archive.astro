@@ -1,0 +1,40 @@
+---
+import { MarkdownInstance } from "astro";
+import PostCard from "../PostCard.astro";
+import { PostFrontmatter } from "../../pages/posts/PostFrontmatter";
+let allPosts: MarkdownInstance<PostFrontmatter>[] = await Astro.glob(
+  "../../pages/posts/*.md"
+);
+allPosts = allPosts
+  .slice(allPosts.length - 10, allPosts.length)
+  .sort((a, b) => {
+    return (
+      new Date(b.frontmatter.pubDate).getTime() -
+      new Date(a.frontmatter.pubDate).getTime()
+    );
+  });
+---
+
+<ul>
+  {
+    allPosts.map((post) => (
+      <li>
+        <PostCard post={post} />
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  ul {
+    padding: 5px;
+    list-style-type: none;
+    display: grid;
+    justify-content: space-around;
+    grid-template-columns: repeat(auto-fill, 262px);
+    gap: 10px;
+    > li {
+      width: fit-content;
+    }
+  }
+</style>

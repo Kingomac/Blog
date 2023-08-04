@@ -1,0 +1,40 @@
+---
+import Archive from "../components/index/Archive.astro";
+import Carousel from "../components/index/Carousel.astro";
+import TagsList from "../components/index/TagsList.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Mario's code chronicles">
+  <main>
+    <h1>Mario's code chronicles</h1>
+
+    <h2>Latest posts</h2>
+    <Carousel />
+
+    <h2>Tags list</h2>
+    <TagsList />
+    <h2>post archive</h2>
+    <Archive />
+
+    <h2>archive pages</h2>
+  </main>
+</Layout>
+
+<style>
+  main {
+    text-align: center;
+    > * {
+      width: 100%;
+    }
+  }
+
+  h1 {
+    text-align: center;
+    background-color: #0393c4;
+    color: white;
+    line-height: 12vh;
+    border-radius: 1%;
+    font-size: 5vh;
+  }
+</style>

@@ -1,0 +1,146 @@
+---
+import Tag from "../Tag.astro";
+const allPosts = await Astro.glob("../../pages/posts/*.md");
+
+const filteredPosts = allPosts
+  .sort(
+    (a, b) =>
+      new Date(b.frontmatter.pubDate).getTime() -
+      new Date(a.frontmatter.pubDate).getTime()
+  )
+  .slice(0, 5);
+---
+
+<div class="container">
+  <div id="slider">
+    <div id="slides">
+      {
+        filteredPosts.map((post) => (
+          <div class="card" id={"slide-" + post.url}>
+            <h3 class="card-title">{post.frontmatter.title}</h3>
+            <div class="card-description">{post.frontmatter.description}</div>
+            <div class="card-details">
+              <ul class="tags-group">
+                {post.frontmatter.tags.map((t) => (
+                  <li>
+                    <Tag name={t} />
+                  </li>
+                ))}
+              </ul>
+              <time datetime={post.frontmatter.pubDate}>
+                Published on {new Date(post.frontmatter.pubDate).toDateString()}
+              </time>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+    <div class="space"></div>
+    {filteredPosts.map((post) => <a href={"#slide-" + post.url}> </a>)}
+  </div>
+</div>
+
+<style>
+  .container {
+    width: 100%;
+    display: grid;
+    justify-content: center;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+  }
+  .card-title {
+    font-size: 32px;
+  }
+  .card-description {
+    font-size: 14px;
+    flex-grow: 1;
+  }
+
+  .card-details {
+    margin: 2vh 2vw 2vh 2vw;
+    font-size: 10px;
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    flex-wrap: wrap;
+
+    > .tags-group {
+      flex-grow: 1;
+      text-align: left;
+      list-style-type: none;
+      padding: 0;
+      > li {
+        display: inline;
+      }
+    }
+  }
+
+  #slider {
+    width: 900px;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  #slides {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    /*-webkit-overflow-scrolling: touch;*/
+  }
+
+  #slides::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  #slides::-webkit-scrollbar-thumb {
+    background: black;
+    border-radius: 10px;
+  }
+
+  #slides::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  #slides > div {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    width: 100%;
+    height: 300px;
+    margin-right: 50px;
+    border-radius: 10px;
+    background: #eee;
+    transform-origin: center center;
+    transform: scale(1);
+    transition: transform 0.5s;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+  }
+
+  #slider > a {
+    display: inline-flex;
+    width: 2vh;
+    height: 2vh;
+    background: white;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0.5vh 0.25vw 0.5vh 0.25vw;
+    position: relative;
+  }
+
+  #slider > a:active {
+    top: 1px;
+  }
+  #slider > a:focus {
+    background: #000;
+  }
+</style>

@@ -1,0 +1,25 @@
+---
+import Tag from "../Tag.astro";
+const posts = await Astro.glob("../../pages/posts/*.md");
+const tags = [...new Set(posts.map((post) => post.frontmatter.tags).flat())];
+---
+
+<ul>
+  {
+    tags.map((tag) => (
+      <li>
+        <Tag name={tag} />
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  ul {
+    padding: 0;
+    list-style-type: none;
+    > li {
+      display: inline;
+    }
+  }
+</style>
