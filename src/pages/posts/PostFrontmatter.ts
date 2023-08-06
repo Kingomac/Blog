@@ -3,6 +3,8 @@ export interface PostFrontmatter {
     title: string 
     pubDate: string 
     description: string 
-    autor: string
+    author: string
     tags: string[]
+    language?: string
+    image?: string
 }

@@ -3,12 +3,16 @@ import Archive from "../components/index/Archive.astro";
 import Carousel from "../components/index/Carousel.astro";
 import TagsList from "../components/index/TagsList.astro";
 import Layout from "../layouts/Layout.astro";
+import MetaTags from "../util/MetaTags";
+
+const metaTags: MetaTags = {
+  description: "",
+  keywords: [],
+};
 ---
 
-<Layout title="Mario's code chronicles">
+<Layout title="Mario's code chronicles" metaTags={metaTags}>
   <main>
-    <h1>Mario's code chronicles</h1>
-
     <h2>Latest posts</h2>
     <Carousel />
 
@@ -27,14 +31,5 @@ import Layout from "../layouts/Layout.astro";
     > * {
       width: 100%;
     }
-  }
-
-  h1 {
-    text-align: center;
-    background-color: #0393c4;
-    color: white;
-    line-height: 12vh;
-    border-radius: 1%;
-    font-size: 5vh;
   }
 </style>

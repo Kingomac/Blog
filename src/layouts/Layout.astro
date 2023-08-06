@@ -1,26 +1,85 @@
 ---
+import MetaTags from "../util/MetaTags";
+
 interface Props {
   title: string;
+  metaTags: MetaTags;
 }
 
-const { title } = Astro.props;
+const { title, metaTags } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Meta tags -->
     <meta name="generator" content={Astro.generator} />
+    <meta name="title" content={metaTags.title || title} />
+    <meta name="description" content={metaTags.description} />
+    <meta name="keywords" content={metaTags.keywords.join(",")} />
+    <meta name="robots" content={metaTags.robots || "index, follow"} />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="language" content={metaTags.language || "English"} />
+    <meta name="author" content={metaTags.author || "Kingomac"} />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={metaTags.ogType || "website"} />
+    <meta property="og:url" content={metaTags.ogUrl || Astro.request.url} />
+    <meta property="og:title" content={metaTags.ogTitle || title} />
+    <meta
+      property="og:description"
+      content={metaTags.ogDescription || metaTags.description}
+    />
+    <meta property="og:image" content={metaTags.ogImage} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:url"
+      content={metaTags.xUrl || metaTags.ogUrl || Astro.request.url}
+    />
+    <meta
+      property="twitter:title"
+      content={metaTags.xTitle || metaTags.ogTitle || title}
+    />
+    <meta
+      property="twitter:description"
+      content={metaTags.xDescription ||
+        metaTags.ogDescription ||
+        metaTags.description}
+    />
+    <meta
+      property="twitter:image"
+      content={metaTags.xImage || metaTags.ogImage}
+    />
+
     <title>{title}</title>
   </head>
   <body>
+    <header>
+      <h1><a href="/">Mario's code chronicles</a></h1>
+    </header>
     <slot />
   </body>
 </html>
 <style is:global>
+  header > h1 {
+    text-align: center;
+    background-color: #0393c4;
+    color: white;
+    line-height: 12vh;
+    border-radius: 1%;
+    font-size: 5vh;
+    > a {
+      color: white;
+      text-decoration: none;
+      :visited {
+        color: white;
+      }
+    }
+  }
   :root {
     /* Color palette */
     --bg: #d9e5d6;
@@ -37,5 +96,6 @@ const { title } = Astro.props;
   code {
     font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
       DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+    padding: 10px;
   }
-</style>
+</style>../util/MetaTags

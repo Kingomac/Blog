@@ -10,9 +10,11 @@ interface Props {
 const { post } = Astro.props;
 ---
 
-<div>
-  <h3>{post.frontmatter.title}</h3>
-  <span>{post.frontmatter.description}</span>
+<article>
+  <header>
+    <h2>{post.frontmatter.title}</h2>
+    <span>{post.frontmatter.description}</span>
+  </header>
   <ul>
     {
       post.frontmatter.tags.map((i) => (
@@ -25,26 +27,40 @@ const { post } = Astro.props;
   <time datetime={post.frontmatter.pubDate}
     >{new Date(post.frontmatter.pubDate).toLocaleDateString()}</time
   >
-</div>
+  <a href={post.url}></a>
+</article>
 
 <style>
-  div {
+  article {
     display: grid;
     justify-content: space-around;
     grid-template-columns: 90%;
-    grid-template-rows: 1fr 4fr 1fr;
+    grid-template-rows: 4fr 1fr;
     width: 262px;
     height: 300px;
     border: solid 1px black;
 
-    > span {
-      width: 100%;
-      text-align: start;
+    > a {
+      width: 262px;
+      height: 300px;
+      position: absolute;
     }
 
-    > h3 {
-      text-align: center;
-      font-size: larger;
+    > header {
+      > span {
+        width: 100%;
+        text-align: start;
+        display: -webkit-box;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-align: justify;
+      }
+
+      > h2 {
+        text-align: center;
+        font-size: larger;
+      }
     }
 
     > ul {

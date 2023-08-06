@@ -1,0 +1,28 @@
+---
+import "../styles/post.css";
+import Layout from "./Layout.astro";
+import { PostFrontmatter } from "../pages/posts/PostFrontmatter";
+import MetaTags from "../util/MetaTags";
+
+interface Props {
+  frontmatter: PostFrontmatter;
+}
+
+const { frontmatter } = Astro.props;
+const metaTags: MetaTags = {
+  description: frontmatter.description,
+  keywords: frontmatter.tags,
+  ogType: "article",
+  author: frontmatter.author,
+  language: frontmatter.language,
+  ogImage: frontmatter.image,
+};
+---
+
+<Layout title={frontmatter.title} metaTags={metaTags}>
+  <main>
+    <h1>{frontmatter.title}</h1>
+
+    <slot />
+  </main>
+</Layout>
