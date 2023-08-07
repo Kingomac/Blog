@@ -25,6 +25,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
+  GOOGLE_SITE_VERIFICATION: ${{ secrets.GOOGLE_SITE_VERIFICATION }}
   BUILD_PATH: "." # default value when not using subfolders
   # BUILD_PATH: subfolder
 
@@ -33,8 +34,6 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - env:
-          GOOGLE_SITE_VERIFICATION: ${{ secrets.GOOGLE_SITE_VERIFICATION }}
       - uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2
         with:
