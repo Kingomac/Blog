@@ -33,11 +33,13 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: Print Google Site Verification file
-        run: echo $GOOGLE_SITE_VERIFICATION > public/$GOOGLE_SITE_FILENAME
+      - name: Create public directory if it does not exist
+        run: mkdir -p public
+      - name: Make Google Site Verification file
         env:
           GOOGLE_SITE_FILENAME: ${{ secrets.GOOGLE_SITE_FILENAME }}
           GOOGLE_SITE_VERIFICATION: ${{ secrets.GOOGLE_SITE_VERIFICATION }}
+        run: echo "$GOOGLE_SITE_VERIFICATION" > ./public/"$GOOGLE_SITE_FILENAME"
       - uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2
         with:
