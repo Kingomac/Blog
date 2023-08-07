@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create Google Site Verification file
-        run: echo -e "public/${{ secrets.GOOGLE_SITE_VERIFICATION }}" > "${{ secrets.GOOGLE_SITE_FILENAME }}"
+        run: echo -e "${{ secrets.GOOGLE_SITE_VERIFICATION }}" > "public/${{ secrets.GOOGLE_SITE_FILENAME }}"
       - uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2
         with:
