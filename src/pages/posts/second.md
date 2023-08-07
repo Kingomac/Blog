@@ -1,10 +1,11 @@
 ---
-layout: '../../layouts/Layout.astro'
+layout: '../../layouts/PostLayout.astro'
 title: 'My second blog post'
 pubDate: 2023-08-02
 description: 'This is a post jeje'
-autor: 'Mario'
+author: 'Mario'
 tags: ['second']
+
 ---
 
 

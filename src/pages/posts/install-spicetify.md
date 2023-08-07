@@ -3,7 +3,7 @@ layout: '../../layouts/PostLayout.astro'
 title: 'How to install Spicetify on Fedora'
 description: 'Spicetify is a powerful CLI tool that allow users to add extensions and themes from a rich marketplace. However, installing it on Linux can be tricky given the wide range of distros with different packet managers and stores people use. In this tutorial, I will go through the installation process on Fedora 38.'
 pubDate: 2023-08-05
-autor: 'Mario'
+author: 'Mario'
 tags: ['second']
 ---
 

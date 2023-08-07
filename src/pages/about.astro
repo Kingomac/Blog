@@ -1,8 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import MetaTags from "../util/MetaTags";
+
+const metaTags: MetaTags = {
+  description: "",
+  keywords: [],
+};
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="About me" metaTags={metaTags}>
   <main>
     <h1>uwu</h1>
   </main>
