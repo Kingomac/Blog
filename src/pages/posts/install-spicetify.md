@@ -21,7 +21,7 @@ tags: ['second']
 
 First we need to install the official Spotify app. We'll go with the software store version, in particular, it's the [flathub](https://flathub.org/) one.
 
-![](/posts-img/install-spicetify/software-client.webp)
+![Install spotify client from Fedora software store](/posts-img/install-spicetify/software-client.webp)
 
 </section>
 
@@ -71,6 +71,17 @@ To restore it:
 ```shell
 spicetify restore backup
 ```
+
+</section>
+
+
+<section>
+
+## Result
+
+This would be the result, you'd be able to access the Spicetify Marketplace from the right menu and install extensions and themes.
+
+![](/posts-img/install-spicetify/result.webp)
 
 </section>
 
