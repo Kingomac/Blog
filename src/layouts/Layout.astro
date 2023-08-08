@@ -13,8 +13,8 @@ const { title, metaTags } = Astro.props;
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/Blog/favicon.svg" />
     <!-- Meta tags -->
     <meta name="generator" content={Astro.generator} />
     <meta name="title" content={metaTags.title || title} />
@@ -59,7 +59,7 @@ const { title, metaTags } = Astro.props;
   </head>
   <body>
     <header>
-      <h1><a href="/">Mario's code chronicles</a></h1>
+      <h1><a href="/Blog/">Mario's code chronicles</a></h1>
     </header>
     <slot />
   </body>
@@ -91,11 +91,20 @@ const { title, metaTags } = Astro.props;
   html {
     font-family: system-ui, sans-serif;
     background: var(--bg);
-    margin: 2vh 2vw 2vh 2vw;
   }
   code {
     font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
       DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
     padding: 10px;
+  }
+
+  body {
+    margin: 2vh 10vw 2vh 10vw;
+  }
+
+  @media (orientation: portrait) {
+    body {
+      margin: 0.75vh 0.75vw 0.75vh 0.75vw;
+    }
   }
 </style>
