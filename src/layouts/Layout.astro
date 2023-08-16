@@ -65,7 +65,11 @@ const { title, metaTags } = Astro.props;
   </body>
 </html>
 <style is:global>
+  body {
+    margin: 0;
+  }
   header > h1 {
+    margin: 0;
     text-align: center;
     background-color: #0393c4;
     color: white;
@@ -96,11 +100,5 @@ const { title, metaTags } = Astro.props;
     font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
       DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
     padding: 10px;
-  }
-
-  @media (orientation: portrait) {
-    body {
-      margin: 0.75vh 0.75vw 0.75vh 0.75vw;
-    }
   }
 </style>
