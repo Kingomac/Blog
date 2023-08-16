@@ -22,7 +22,9 @@ const metaTags: MetaTags = {
 <Layout title={frontmatter.title} metaTags={metaTags}>
   <main>
     <h1>{frontmatter.title}</h1>
-
-    <slot />
+    <div class="post-page">
+      <slot />
+      <aside>jkahkas</aside>
+    </div>
   </main>
 </Layout>
