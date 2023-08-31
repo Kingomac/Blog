@@ -1,5 +1,5 @@
 ---
-import MetaTags from "../util/MetaTags";
+import type MetaTags from "../util/MetaTags";
 
 interface Props {
   title: string;
@@ -9,7 +9,7 @@ interface Props {
 const { title, metaTags } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -65,8 +65,10 @@ const { title, metaTags } = Astro.props;
   </body>
 </html>
 <style is:global>
-  body {
+  body,
+  html {
     margin: 0;
+    padding: 0;
   }
   header > h1 {
     margin: 0;
@@ -97,8 +99,15 @@ const { title, metaTags } = Astro.props;
     background: var(--bg);
   }
   code {
-    font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-      DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+    font-family:
+      Menlo,
+      Monaco,
+      Lucida Console,
+      Liberation Mono,
+      DejaVu Sans Mono,
+      Bitstream Vera Sans Mono,
+      Courier New,
+      monospace;
     padding: 10px;
   }
 </style>
