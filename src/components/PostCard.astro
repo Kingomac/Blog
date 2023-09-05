@@ -38,7 +38,9 @@ const { post } = Astro.props;
     grid-template-rows: 4fr 1fr;
     width: 262px;
     height: 300px;
-    border: solid 1px black;
+    border: solid 1px var(--accent);
+    background-color: #20414d;
+    color: white;
 
     > a {
       width: 262px;
@@ -47,6 +49,10 @@ const { post } = Astro.props;
     }
 
     > header {
+      display: grid;
+      justify-content: center;
+      height: auto;
+      background-color: transparent;
       > span {
         width: 100%;
         text-align: start;
