@@ -1,5 +1,5 @@
-import { MarkdownInstance } from "astro";
-import { PostFrontmatter } from "../posts/PostFrontmatter";
+import { type MarkdownInstance } from "astro";
+import { type PostFrontmatter } from "../posts/PostFrontmatter";
 
 /**
  * Looks in Markdown posts files to list all the tags

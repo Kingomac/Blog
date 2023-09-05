@@ -1,8 +1,8 @@
 ---
 import "../styles/post.css";
-import Layout from "./Layout.astro";
-import { PostFrontmatter } from "../pages/posts/PostFrontmatter";
-import MetaTags from "../util/MetaTags";
+import { type PostFrontmatter } from "../pages/posts/PostFrontmatter";
+import type MetaTags from "../util/MetaTags";
+import { ViewTransitions } from "astro:transitions";
 
 interface Props {
   frontmatter: PostFrontmatter;
@@ -10,6 +10,7 @@ interface Props {
 
 const { frontmatter } = Astro.props;
 const metaTags: MetaTags = {
+  title: frontmatter.title,
   description: frontmatter.description,
   keywords: frontmatter.tags,
   ogType: "article",
@@ -19,12 +20,134 @@ const metaTags: MetaTags = {
 };
 ---
 
-<Layout title={frontmatter.title} metaTags={metaTags}>
-  <main>
-    <h1>{frontmatter.title}</h1>
-    <div class="post-page">
-      <slot />
-      <aside>jkahkas</aside>
-    </div>
-  </main>
-</Layout>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/Blog/favicon.svg" />
+    <!-- Meta tags -->
+    <meta name="generator" content={Astro.generator} />
+    <meta name="title" content={metaTags.title} />
+    <meta name="description" content={metaTags.description} />
+    <meta name="keywords" content={metaTags.keywords.join(",")} />
+    <meta name="robots" content={metaTags.robots || "index, follow"} />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="language" content={metaTags.language || "English"} />
+    <meta name="author" content={metaTags.author || "Kingomac"} />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={metaTags.ogType || "website"} />
+    <meta property="og:url" content={metaTags.ogUrl || Astro.request.url} />
+    <meta property="og:title" content={metaTags.ogTitle} />
+    <meta
+      property="og:description"
+      content={metaTags.ogDescription || metaTags.description}
+    />
+    <meta property="og:image" content={metaTags.ogImage} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:url"
+      content={metaTags.xUrl || metaTags.ogUrl || Astro.request.url}
+    />
+    <meta
+      property="twitter:title"
+      content={metaTags.xTitle || metaTags.ogTitle}
+    />
+    <meta
+      property="twitter:description"
+      content={metaTags.xDescription ||
+        metaTags.ogDescription ||
+        metaTags.description}
+    />
+    <meta
+      property="twitter:image"
+      content={metaTags.xImage || metaTags.ogImage}
+    />
+
+    <title>{metaTags.title}</title>
+    <ViewTransitions />
+  </head>
+  <body>
+    <header transition:persist>
+      <button menu-btn>menu</button>
+      <h1><a href="/Blog/">Mario's code chronicles</a></h1>
+    </header>
+    <main>
+      <h1>{frontmatter.title}</h1>
+      <div class="post-page">
+        <slot />
+        <aside>jkahkas</aside>
+      </div>
+    </main>
+    <style is:global>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        scroll-behavior: smooth;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        background-color: #0393c4;
+        height: 8vh;
+        > h1 {
+          width: 100%;
+          margin: 0;
+          text-align: center;
+          color: white;
+          border-radius: 1%;
+          > a {
+            color: white;
+            text-decoration: none;
+            :visited {
+              color: white;
+            }
+          }
+        }
+        > button {
+          width: min-content;
+        }
+      }
+      :root {
+        /* Color palette */
+        --bg: #d9e5d6;
+        --primary: #00a7e1;
+        --secondary: #eddea4;
+        --accent: #ff9b42;
+        --accent-light: #f7a072;
+      }
+      html {
+        font-family: system-ui, sans-serif;
+        background: var(--bg);
+      }
+      code {
+        font-family:
+          Menlo,
+          Monaco,
+          Lucida Console,
+          Liberation Mono,
+          DejaVu Sans Mono,
+          Bitstream Vera Sans Mono,
+          Courier New,
+          monospace;
+        padding: 10px;
+      }
+    </style>
+
+    <script>
+      const tableOfContents: HTMLElement =
+        document.querySelector(".table-of-contents");
+      (
+        document.querySelectorAll("[menu-btn]") as NodeListOf<HTMLElement>
+      ).forEach((i) => {
+        i.onclick = () => {
+          tableOfContents.style.display =
+            tableOfContents.style.display != "none" ? "none" : "block";
+        };
+      });
+    </script>
+  </body>
+</html>
