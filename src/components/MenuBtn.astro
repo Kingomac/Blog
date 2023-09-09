@@ -1,0 +1,22 @@
+<menu-button>menu</menu-button>
+
+<script>
+  class MenuButton extends HTMLElement {
+    constructor() {
+      super();
+    }
+
+    connectedCallback() {
+      this.addEventListener("click", this.handleClick);
+    }
+
+    handleClick() {
+      const tableOfContents: HTMLElement =
+        document.querySelector(".table-of-contents");
+      tableOfContents.style.display =
+        tableOfContents.style.display != "none" ? "none" : "block";
+    }
+  }
+
+  customElements.define("menu-button", MenuButton);
+</script>
