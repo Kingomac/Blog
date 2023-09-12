@@ -3,6 +3,7 @@ import "../styles/post.css";
 import { type PostFrontmatter } from "../pages/posts/PostFrontmatter";
 import type MetaTags from "../util/MetaTags";
 import { ViewTransitions } from "astro:transitions";
+import MenuBtn from "../components/MenuBtn.astro";
 
 interface Props {
   frontmatter: PostFrontmatter;
@@ -71,7 +72,7 @@ const metaTags: MetaTags = {
   </head>
   <body>
     <header transition:persist>
-      <button menu-btn>menu</button>
+      <MenuBtn />
       <h1><a href="/Blog/">Mario's code chronicles</a></h1>
     </header>
     <main>
@@ -136,18 +137,5 @@ const metaTags: MetaTags = {
         padding: 10px;
       }
     </style>
-
-    <script>
-      const tableOfContents: HTMLElement =
-        document.querySelector(".table-of-contents");
-      (
-        document.querySelectorAll("[menu-btn]") as NodeListOf<HTMLElement>
-      ).forEach((i) => {
-        i.onclick = () => {
-          tableOfContents.style.display =
-            tableOfContents.style.display != "none" ? "none" : "block";
-        };
-      });
-    </script>
   </body>
 </html>
