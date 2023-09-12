@@ -1,19 +1,30 @@
 ---
-import { getTagsList } from "./tagUtil";
+import { getTagsList } from '../../util/tagUtil'
+import Layout from '../../layouts/Layout.astro';
+import type MetaTags from '../../util/MetaTags';
 
 export async function getStaticPaths() {
   const tags = await getTagsList();
-  const result = tags.map((i) => {
+  console.log("tags:", tags)
+  return tags.map((i) => {
     return {
       params: {
         tag: i,
       },
     };
   });
-  return result;
 }
 
 const { tag } = Astro.params;
+const metaTags: MetaTags = {
+  title: "Tag - " + tag,
+  description: "Posts with the tag " + tag,
+  keywords: ['blog', 'posts', 'tag', tag]
+}
 ---
 
+<Layout title={metaTags.title} metaTags={metaTags}>
+
 <h1>Tag: {tag}</h1>
+
+</Layout>
