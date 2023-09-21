@@ -1,5 +1,6 @@
 ---
 import "../styles/post.css";
+import "../styles/main.css";
 import { type PostFrontmatter } from "../pages/posts/PostFrontmatter";
 import type MetaTags from "../util/MetaTags";
 import { ViewTransitions } from "astro:transitions";
@@ -82,60 +83,5 @@ const metaTags: MetaTags = {
         <aside>jkahkas</aside>
       </div>
     </main>
-    <style is:global>
-      body,
-      html {
-        margin: 0;
-        padding: 0;
-        scroll-behavior: smooth;
-      }
-      header {
-        display: flex;
-        align-items: center;
-        background-color: #0393c4;
-        height: 8vh;
-        > h1 {
-          width: 100%;
-          margin: 0;
-          text-align: center;
-          color: white;
-          border-radius: 1%;
-          > a {
-            color: white;
-            text-decoration: none;
-            :visited {
-              color: white;
-            }
-          }
-        }
-        > button {
-          width: min-content;
-        }
-      }
-      :root {
-        /* Color palette */
-        --bg: #d9e5d6;
-        --primary: #00a7e1;
-        --secondary: #eddea4;
-        --accent: #ff9b42;
-        --accent-light: #f7a072;
-      }
-      html {
-        font-family: system-ui, sans-serif;
-        background: var(--bg);
-      }
-      code {
-        font-family:
-          Menlo,
-          Monaco,
-          Lucida Console,
-          Liberation Mono,
-          DejaVu Sans Mono,
-          Bitstream Vera Sans Mono,
-          Courier New,
-          monospace;
-        padding: 10px;
-      }
-    </style>
   </body>
 </html>

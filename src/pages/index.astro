@@ -19,17 +19,24 @@ const metaTags: MetaTags = {
     <h2>Tags list</h2>
     <TagsList />
     <h2>post archive</h2>
-    <Archive />
-
+    <div class="archive-container">
+      <Archive />
+    </div>
     <h2>archive pages</h2>
   </main>
 </Layout>
 
 <style>
   main {
+    display: grid;
+    justify-content: center;
     text-align: center;
     > * {
       width: 100%;
     }
+  }
+
+  .archive-container {
+    width: 70vw;
   }
 </style>
