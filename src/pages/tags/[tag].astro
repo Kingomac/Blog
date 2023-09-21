@@ -1,11 +1,15 @@
 ---
-import { getTagsList } from '../../util/tagUtil'
-import Layout from '../../layouts/Layout.astro';
-import type MetaTags from '../../util/MetaTags';
+import { getTagsList } from "../../util/tagUtil";
+import Layout from "../../layouts/Layout.astro";
+import type MetaTags from "../../util/MetaTags";
+import type { MarkdownInstance } from "astro";
+import type { PostFrontmatter } from "../posts/PostFrontmatter";
+import PostCard from "../../components/PostCard.astro";
+import PostList from "../../components/PostList.astro";
 
 export async function getStaticPaths() {
   const tags = await getTagsList();
-  console.log("tags:", tags)
+  console.log("tags:", tags);
   return tags.map((i) => {
     return {
       params: {
@@ -19,12 +23,31 @@ const { tag } = Astro.params;
 const metaTags: MetaTags = {
   title: "Tag - " + tag,
   description: "Posts with the tag " + tag,
-  keywords: ['blog', 'posts', 'tag', tag]
-}
+  keywords: ["blog", "posts", "tag", tag],
+};
+
+const posts = (await Astro.glob("../posts/*.md")).filter(
+  (i: MarkdownInstance<PostFrontmatter>) => i.frontmatter.tags.includes(tag),
+) as MarkdownInstance<PostFrontmatter>[];
 ---
 
 <Layout title={metaTags.title} metaTags={metaTags}>
+  <h1>Tag: {tag}</h1>
 
-<h1>Tag: {tag}</h1>
-
+  <main>
+    <div class="archive-container">
+      <PostList posts={posts} />
+    </div>
+  </main>
 </Layout>
+
+<style>
+  main {
+    display: flex;
+    justify-content: center;
+  }
+
+  .archive-container {
+    width: 70vw;
+  }
+</style>

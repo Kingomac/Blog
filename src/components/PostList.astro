@@ -1,0 +1,35 @@
+---
+import type { MarkdownInstance } from "astro";
+import type { PostFrontmatter } from "../pages/posts/PostFrontmatter";
+import PostCard from "./PostCard.astro";
+
+type Props = {
+  posts: MarkdownInstance<PostFrontmatter>[];
+};
+
+const { posts } = Astro.props;
+---
+
+<ul>
+  {
+    posts.map((i) => (
+      <li>
+        <PostCard post={i} />
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  ul {
+    padding: 0;
+    list-style-type: none;
+    display: grid;
+    justify-content: space-around;
+    grid-template-columns: repeat(auto-fill, 262px);
+    gap: 10px;
+    > li {
+      width: fit-content;
+    }
+  }
+</style>
