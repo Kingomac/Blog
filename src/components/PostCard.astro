@@ -35,12 +35,12 @@ const { post } = Astro.props;
     display: grid;
     justify-content: space-around;
     grid-template-columns: 90%;
-    grid-template-rows: 4fr 1fr;
+    grid-template-rows: 3fr 1fr;
     width: 262px;
     height: 300px;
-    border: solid 1px var(--accent);
-    background-color: #20414d;
-    color: white;
+    border: solid 1px var(--primary);
+    background-color: #ffffff;
+    color: black;
 
     > a {
       width: 262px;
@@ -66,15 +66,17 @@ const { post } = Astro.props;
       > h2 {
         text-align: center;
         font-size: larger;
+        margin: 0;
       }
     }
 
     > ul {
       padding: 0;
-      text-align: center;
       list-style-type: none;
       display: flex;
       flex-wrap: wrap;
+      gap: 1rem;
+      row-gap: 0;
       justify-content: center;
       > li {
         font-size: small;

@@ -8,7 +8,7 @@ html {
 header {
     display: flex;
     align-items: center;
-    background-color: #0393c4;
+    background-color: var(--primary);
     height: 8vh;
 
     >h1 {
@@ -35,8 +35,8 @@ header {
 
 :root {
     /* Color palette */
-    --bg: #d9e5d6;
-    --primary: #00a7e1;
+    --bg: #ebebeb;
+    --primary: #19353f;
     --secondary: #eddea4;
     --accent: #ff9b42;
     --accent-light: #f7a072;
