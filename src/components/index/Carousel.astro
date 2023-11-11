@@ -6,7 +6,7 @@ const filteredPosts = allPosts
   .sort(
     (a, b) =>
       new Date(b.frontmatter.pubDate).getTime() -
-      new Date(a.frontmatter.pubDate).getTime()
+      new Date(a.frontmatter.pubDate).getTime(),
   )
   .slice(0, 5);
 ---
@@ -17,6 +17,7 @@ const filteredPosts = allPosts
       {
         filteredPosts.map((post) => (
           <div class="card" id={"slide-" + post.url}>
+            <a class="link-box" href={post.url} />
             <h3 class="card-title">{post.frontmatter.title}</h3>
             <div class="card-description">{post.frontmatter.description}</div>
             <div class="card-details">
@@ -49,6 +50,12 @@ const filteredPosts = allPosts
   .card {
     display: flex;
     flex-direction: column;
+    > .link-box {
+      position: absolute;
+      transform: translateY(-30px);
+      width: 900px;
+      height: 250px;
+    }
   }
   .card-title {
     font-size: 32px;
@@ -63,18 +70,18 @@ const filteredPosts = allPosts
     margin: 2vh 2vw 2vh 2vw;
     font-size: 10px;
     display: flex;
+    justify-content: space-between;
     flex-direction: row;
     width: 90%;
     flex-wrap: wrap;
 
     > .tags-group {
-      flex-grow: 1;
-      text-align: left;
+      padding: 0px;
       list-style-type: none;
-      padding: 0;
-      > li {
-        display: inline;
-      }
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: start;
     }
   }
 
@@ -113,7 +120,7 @@ const filteredPosts = allPosts
     height: 300px;
     margin-right: 50px;
     border-radius: 10px;
-    background: #eee;
+    background: #ffffff;
     transform-origin: center center;
     transform: scale(1);
     transition: transform 0.5s;

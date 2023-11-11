@@ -18,8 +18,9 @@ const tags = [...new Set(posts.map((post) => post.frontmatter.tags).flat())];
   ul {
     padding: 0;
     list-style-type: none;
-    > li {
-      display: inline;
-    }
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
   }
 </style>

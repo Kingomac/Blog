@@ -7,14 +7,45 @@ const { name } = Astro.props;
 </a>
 
 <style>
+  @keyframes tag-border-animation {
+    0% {
+      --color: #ff8113;
+      box-shadow: -1px 0px 5px 1px var(--color);
+      color: var(--color);
+    }
+
+    25% {
+      --color: #f39544;
+      box-shadow: -1px 0px 5px 1px var(--color);
+      color: var(--color);
+    }
+
+    50% {
+      --color: rgb(255, 178, 107);
+      box-shadow: -1px 0px 5px 1px var(--color);
+      color: var(--color);
+    }
+
+    75% {
+      --color: rgb(255, 220, 188);
+      box-shadow: -1px 0px 5px 1px var(--color);
+      color: var(--color);
+    }
+
+    100% {
+      --color: #ffffff;
+      box-shadow: -1px 0px 5px 1px var(--color);
+      color: var(--color);
+    }
+  }
   a {
+    border-radius: 8px;
     color: #f1f1f1;
-    background-color: #599ed6;
+    background-color: var(--primary);
     padding: 0.3vh 0.7vw 0.3vh 0.7vw;
-    margin: 0.2rem;
     font-weight: bold;
     text-decoration: none;
-    border-radius: 10px;
     text-align: center;
+    animation: tag-border-animation alternate-reverse 3s infinite;
   }
 </style>

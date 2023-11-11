@@ -5,10 +5,42 @@ html {
     scroll-behavior: smooth;
 }
 
+@keyframes topbar-animation {
+    0% {
+        --color: #ff8113;
+        text-shadow: 0 0 10px var(--color);
+        color: var(--color);
+    }
+
+    25% {
+        --color: #f39544;
+        text-shadow: 0 0 10px var(--color);
+        color: var(--color);
+    }
+
+    50% {
+        --color: rgb(255, 178, 107);
+        text-shadow: 0 0 10px var(--color);
+        color: var(--color);
+    }
+
+    75% {
+        --color: rgb(255, 220, 188);
+        text-shadow: 0 0 10px var(--color);
+        color: var(--color);
+    }
+
+    100% {
+        --color: #ffffff;
+        text-shadow: 0 0 10px var(--color);
+        color: var(--color);
+    }
+}
+
 header {
     display: flex;
     align-items: center;
-    background-color: #0393c4;
+    background-color: var(--primary);
     height: 8vh;
 
     >h1 {
@@ -19,7 +51,7 @@ header {
         border-radius: 1%;
 
         >a {
-            color: white;
+            animation: topbar-animation alternate 3s infinite;
             text-decoration: none;
 
             :visited {
@@ -35,8 +67,8 @@ header {
 
 :root {
     /* Color palette */
-    --bg: #d9e5d6;
-    --primary: #00a7e1;
+    --bg: #ebebeb;
+    --primary: #19353f;
     --secondary: #eddea4;
     --accent: #ff9b42;
     --accent-light: #f7a072;
