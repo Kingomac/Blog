@@ -5,6 +5,38 @@ html {
     scroll-behavior: smooth;
 }
 
+@keyframes topbar-animation {
+    0% {
+        --color: #ff8113;
+        text-shadow: 0 0 10px var(--color);
+        color: var(--color);
+    }
+
+    25% {
+        --color: #f39544;
+        text-shadow: 0 0 10px var(--color);
+        color: var(--color);
+    }
+
+    50% {
+        --color: rgb(255, 178, 107);
+        text-shadow: 0 0 10px var(--color);
+        color: var(--color);
+    }
+
+    75% {
+        --color: rgb(255, 220, 188);
+        text-shadow: 0 0 10px var(--color);
+        color: var(--color);
+    }
+
+    100% {
+        --color: #ffffff;
+        text-shadow: 0 0 10px var(--color);
+        color: var(--color);
+    }
+}
+
 header {
     display: flex;
     align-items: center;
@@ -19,7 +51,7 @@ header {
         border-radius: 1%;
 
         >a {
-            color: white;
+            animation: topbar-animation alternate 3s infinite;
             text-decoration: none;
 
             :visited {
