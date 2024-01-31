@@ -5,6 +5,20 @@ html {
     scroll-behavior: smooth;
 }
 
+@keyframes page-bg-anim {
+    from {
+        background-color: rgb(255, 209, 153);
+    }
+
+    to {
+        background-color: rgb(190, 221, 226);
+    }
+}
+
+body {
+    animation: page-bg-anim ease-in-out alternate infinite 20s;
+}
+
 @keyframes topbar-animation {
     0% {
         --color: #ff8113;
