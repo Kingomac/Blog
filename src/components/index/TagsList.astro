@@ -2,7 +2,8 @@
 import Tag from "../Tag.astro";
 
 type Props = {
-  listDirection: "row" | "row-reverse" | "column" | "column-reverse";
+  listDirection: "row" | "row-reverse" | "col" | "col-reverse";
+  //listDirection2: "row" | "row-reverse" | "column" | "column-reverse";
 };
 
 const posts = await Astro.glob("../../pages/posts/*.md");
@@ -11,8 +12,7 @@ const { listDirection } = Astro.props;
 ---
 
 <ul
-  class="p-0 flex flex-wrap gap-1 justify-center"
-  style=`flex-direction: ${listDirection};`
+  class=`p-0 flex flex-wrap gap-1 flex-${listDirection} justify-center bg-white bg-opacity-50 shadow-lg p-2 rounded-md`
 >
   {
     tags.map((tag) => (
