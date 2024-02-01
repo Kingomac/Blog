@@ -12,31 +12,13 @@ const metaTags: MetaTags = {
 ---
 
 <Layout title="Mario's code chronicles" metaTags={metaTags}>
-  <main>
-    <h2>Latest posts</h2>
+  <main class="flex flex-col items-center gap-5 p-4">
     <Carousel />
 
-    <h2>Tags list</h2>
-    <TagsList />
-    <h2>post archive</h2>
-    <div class="archive-container">
-      <Archive />
+    <div class="grid md:grid-cols-[1fr_5fr] gap-2">
+      <section><TagsList listDirection="row" /></section>
+      <section><Archive /></section>
     </div>
     <h2>archive pages</h2>
   </main>
 </Layout>
-
-<style>
-  main {
-    display: grid;
-    justify-content: center;
-    text-align: center;
-    > * {
-      width: 100%;
-    }
-  }
-
-  .archive-container {
-    width: 70vw;
-  }
-</style>

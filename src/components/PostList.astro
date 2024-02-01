@@ -24,10 +24,10 @@ const { posts } = Astro.props;
   ul {
     padding: 0;
     list-style-type: none;
-    display: grid;
+    display: flex;
     justify-content: space-around;
-    grid-template-columns: repeat(auto-fill, 262px);
-    gap: 10px;
+    flex-wrap: wrap;
+    gap: 20px;
     > li {
       width: fit-content;
     }

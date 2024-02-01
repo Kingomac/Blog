@@ -1,5 +1,4 @@
 ---
-import "../styles/main.css";
 import { ViewTransitions } from "astro:transitions";
 import type MetaTags from "../util/MetaTags";
 
@@ -61,8 +60,11 @@ const { title, metaTags } = Astro.props;
 
     <ViewTransitions />
   </head>
-  <body>
-    <header transition:persist>
+  <body class="bg-gradient-to-b from-teal-900 via-emeral-300 to-slate-100">
+    <header
+      transition:persist
+      class="bg-black bg-opacity-40 text-white p-3 text-4xl font-bold"
+    >
       <h1><a href="/Blog/">Mario's code chronicles</a></h1>
     </header>
     <slot />
