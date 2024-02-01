@@ -19,8 +19,7 @@ const { rootClass = "" } = Astro.props;
     }
 
     handleClick() {
-      const tableOfContents: HTMLElement =
-        document.querySelector(".table-of-contents");
+      const tableOfContents: HTMLElement = document.querySelector(".toc");
       tableOfContents.style.display =
         tableOfContents.style.display != "none" ? "none" : "block";
     }
