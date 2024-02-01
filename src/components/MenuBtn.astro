@@ -1,4 +1,12 @@
-<menu-button>menu</menu-button>
+---
+type Props = {
+  rootClass: string;
+};
+
+const { rootClass = "" } = Astro.props;
+---
+
+<menu-button class={rootClass}>menu</menu-button>
 
 <script>
   class MenuButton extends HTMLElement {
