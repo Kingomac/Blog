@@ -1,10 +1,9 @@
 ---
-import "../styles/post.css";
-import "../styles/main.css";
 import { type PostFrontmatter } from "../pages/posts/PostFrontmatter";
 import type MetaTags from "../util/MetaTags";
 import { ViewTransitions } from "astro:transitions";
 import MenuBtn from "../components/MenuBtn.astro";
+import "../styles/post.css";
 
 interface Props {
   frontmatter: PostFrontmatter;
@@ -71,13 +70,21 @@ const metaTags: MetaTags = {
     <title>{metaTags.title}</title>
     <ViewTransitions />
   </head>
-  <body>
-    <header transition:persist>
-      <MenuBtn />
+  <body
+    id="post-body"
+    class="bg-gradient-to-b from-teal-900 via-emeral-300 to-slate-100"
+  >
+    <header
+      transition:persist
+      class="bg-black bg-opacity-40 text-white p-3 text-4xl font-bold gap-4"
+    >
+      <MenuBtn rootClass="absolute" />
       <h1><a href="/Blog/">Mario's code chronicles</a></h1>
     </header>
-    <main>
-      <h1>{frontmatter.title}</h1>
+    <main class="flex flex-col justify-center m-1">
+      <h1 class="bg-white bg-opacity-70 font-bold my-5 rounded-md text-4xl p-5">
+        {frontmatter.title}
+      </h1>
       <div class="post-page">
         <slot />
         <aside>jkahkas</aside>

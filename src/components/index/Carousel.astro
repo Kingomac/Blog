@@ -43,9 +43,11 @@ const filteredPosts = allPosts
 
 <style>
   .container {
-    width: 100%;
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    margin: 0vh 0vw 0vh 0vw;
   }
   .card {
     display: flex;
@@ -81,7 +83,7 @@ const filteredPosts = allPosts
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
-      justify-content: start;
+      justify-content: flex-start;
     }
   }
 
@@ -120,7 +122,7 @@ const filteredPosts = allPosts
     height: 300px;
     margin-right: 50px;
     border-radius: 10px;
-    background: #ffffff;
+    background-color: rgba(255, 255, 255, 0.7);
     transform-origin: center center;
     transform: scale(1);
     transition: transform 0.5s;
@@ -136,7 +138,7 @@ const filteredPosts = allPosts
     display: inline-flex;
     width: 2vh;
     height: 2vh;
-    background: white;
+    background: rgba(255, 255, 255, 0.7);
     text-decoration: none;
     align-items: center;
     justify-content: center;

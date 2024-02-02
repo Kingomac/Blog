@@ -10,26 +10,12 @@ type Props = {
 const { posts } = Astro.props;
 ---
 
-<ul>
+<ul class="p-0 list-none flex justify-center flex-wrap gap-5">
   {
     posts.map((i) => (
-      <li>
+      <li class="fit-content">
         <PostCard post={i} />
       </li>
     ))
   }
 </ul>
-
-<style>
-  ul {
-    padding: 0;
-    list-style-type: none;
-    display: grid;
-    justify-content: space-around;
-    grid-template-columns: repeat(auto-fill, 262px);
-    gap: 10px;
-    > li {
-      width: fit-content;
-    }
-  }
-</style>

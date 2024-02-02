@@ -7,7 +7,7 @@ author: 'Mario'
 tags: ['Fedora', 'Spicetify', 'Spotify', 'Linux']
 ---
 
-<aside class="table-of-contents">
+<aside class="toc">
 
 - [Install Spotify](#install-spotify)
 - [Install Spicetify](#install-spicetify)

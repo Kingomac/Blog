@@ -1,4 +1,4 @@
-body,
+/*body,
 html {
     margin: 0;
     padding: 0;
@@ -80,7 +80,6 @@ header {
 }
 
 :root {
-    /* Color palette */
     --bg: #ebebeb;
     --primary: #19353f;
     --secondary: #eddea4;
@@ -104,4 +103,4 @@ code {
         Courier New,
         monospace;
     padding: 10px;
-}
+}*/

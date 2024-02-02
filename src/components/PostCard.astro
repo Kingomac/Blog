@@ -31,59 +31,6 @@ const { post } = Astro.props;
 </article>
 
 <style>
-  @keyframes post-card-border-animation {
-    0% {
-      --color: #ff8113;
-      box-shadow: 0 0 5px 1px var(--color);
-      border-color: var(--color);
-    }
-
-    25% {
-      --color: #d16200;
-      box-shadow: 0 0 5px 1px var(--color);
-      border-color: var(--color);
-    }
-
-    50% {
-      --color: #be5f0b;
-      box-shadow: 0 0 5px 1px var(--color);
-      border-color: var(--color);
-    }
-
-    75% {
-      --color: #813c00;
-      box-shadow: 0 0 5px 1px var(--color);
-      border-color: var(--color);
-    }
-
-    100% {
-      --color: #522600;
-      box-shadow: 0 0 5px 1px var(--color);
-      border-color: var(--color);
-    }
-  }
-
-  @keyframes background-animation {
-    0% {
-      background-color: #e6ebff;
-    }
-
-    25% {
-      background-color: #dce3fa;
-    }
-
-    50% {
-      background-color: #e1e6f5;
-    }
-
-    75% {
-      background-color: #cfdaff;
-    }
-
-    100% {
-      background-color: #abbeff;
-    }
-  }
   article {
     display: grid;
     justify-content: space-around;
@@ -91,12 +38,11 @@ const { post } = Astro.props;
     grid-template-rows: 3fr 1fr;
     width: 262px;
     height: 300px;
-    border: double 5px var(--primary);
-    background-color: #ffffff;
+    border: double 5px black;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
     color: black;
-    animation:
-      post-card-border-animation alternate-reverse infinite 3s,
-      background-animation alternate infinite 5s;
+    padding: 1px;
 
     > a {
       width: 262px;
@@ -127,6 +73,7 @@ const { post } = Astro.props;
     }
 
     > ul {
+      margin-top: 5px;
       padding: 0;
       list-style-type: none;
       display: flex;
